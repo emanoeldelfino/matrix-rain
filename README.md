@@ -11,4 +11,4 @@
 - `R` sets/unsets rainbow color effect
 
 ## Credits
-- [Willian Justen Matrix Rain tutorial](https://willianjusten.com.br/criando-o-efeito-da-chuva-do-matrix-com-javascript-puro) is the base of the code. I fixed some small problems and extended it, implementing all the functionality of the speed and different colors, including rainbow effect. You can find the original code [here](https://github.com/willianjusten/labs/blob/main/matrix-rain/index.html).
+- [Willian Justen Matrix Rain tutorial](https://willianjusten.com.br/criando-o-efeito-da-chuva-do-matrix-com-javascript-puro) is the base of the code. I fixed some small problems and extended it, implementing all the functionality of the keys above. You can find the original code [here](https://github.com/willianjusten/labs/blob/main/matrix-rain/index.html).
