@@ -3,6 +3,7 @@ const ctx = c.getContext("2d");
 
 c.height = window.innerHeight;
 c.width = window.innerWidth;
+ctx.fillStyle = "#090609";
 ctx.fillRect(0, 0, c.width , c.height);
 
 window.addEventListener("resize", () => {
@@ -13,7 +14,9 @@ window.addEventListener("resize", () => {
   drops = new Array(Math.floor(columns)).fill(c.height);
 })
 
-const letters = ["日","ﾊ","ﾐ","ﾋ","ｰ","ｳ","ｼ","ﾅ","ﾓ","ﾆ","ｻ","ﾜ","ﾂ","ｵ","ﾘ","ｱ","ﾎ","ﾃ","ﾏ","ｹ","ﾒ","ｴ","ｶ","ｷ","ﾑ","ﾕ","ﾗ","ｾ","ﾈ","ｽ","ﾀ","ﾇ","ﾍ",":","・",".","=","*","+","-","<",">","¦","｜","ﾘ", "0", "1", "2", "3", "4", "5", "7", "8", "9"];
+const letters = ["日","ﾊ","ﾐ","ﾋ","ｰ","ｳ","ｼ","ﾅ","ﾓ","ﾆ","ｻ","ﾜ","ﾂ","ｵ","ﾘ","ｱ","ﾎ","ﾃ","ﾏ",
+                 "ｹ","ﾒ","ｴ","ｶ","ｷ","ﾑ","ﾕ","ﾗ","ｾ","ﾈ","ｽ","ﾀ","ﾇ","ﾍ",":","・",".","=","*",
+                 "+","-","<",">","¦","｜","ﾘ", "0", "1", "2", "3", "4", "5", "7", "8", "9"];
 
 const fontSize = 18;
 
@@ -46,6 +49,9 @@ function draw() {
 }
 
 let drawSpeed = 1;
+let rainbow = false;
+let lastColor;
+let rainbowId;
 let key;
 document.addEventListener("keydown", e => {
   key = e.key.toUpperCase();
@@ -58,7 +64,17 @@ document.addEventListener("keydown", e => {
     draw();
     drawSpeed++;
   } else if (key === "R") {
-    window.location.reload();
+    if (!rainbow) {
+      lastColor = color;
+      rainbowId = setInterval(() => {
+        color = randomColor();
+      }, 5);
+      rainbow = true;
+    } else {
+      clearInterval(rainbowId);
+      color = lastColor;
+      rainbow = false;
+    }
   } else if (colorKeys.includes(key)) {
     color = colorCodes[colorKeys.indexOf(key)];
   } else if (key === ")") {
